@@ -14,6 +14,8 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
+        $types = Type::all();
+        $ids = $types->pluck('id')->all();
         $projects = [
             [
                 'title' => 'GoGrin landing page',
@@ -31,6 +33,7 @@ class ProjectSeeder extends Seeder
             $new_project->last_update = $project['last_update'];
             $new_project->thumb = $project['thumb'];
             $new_project->project_link = $project['project_link'];
+            $new_project->type_id = $project['type_id'];
             $new_project->save();
         }
     }
